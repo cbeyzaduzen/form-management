@@ -20,7 +20,9 @@ const App = (props) => {
 
           <Button color="danger" onClick={toggle}>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-              <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+              <ModalHeader toggle={toggle}>Modal title
+              
+              </ModalHeader>
               <ModalBody>
                 <Popup></Popup>
               </ModalBody>
