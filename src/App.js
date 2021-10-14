@@ -27,12 +27,12 @@ const App = (props) => {
                 <Popup></Popup>
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onClick={toggle}>
+                {/* <Button color="primary" onClick={toggle}>
                   Submit
                 </Button>{" "}
                 <Button color="secondary" onClick={toggle}>
                   Cancel
-                </Button>
+                </Button> */}
               </ModalFooter>
             </Modal>
             +

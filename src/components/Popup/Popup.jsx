@@ -1,30 +1,34 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
 
 const Example = (props) => {
-  
+  const [form, setFormList] = useState([]);
   const [formName, setFormName] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setFormDescription] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [age, setAge] = useState("");
 
   const handle = () => {
-    localStorage.setItem("FormName", formName);
-    localStorage.setItem("Description", description);
-    localStorage.setItem("Name", name);
-    localStorage.setItem("Surname", surname);
-    localStorage.setItem("Age", age);
+    const item = {
+      FormName: name,
+      Description: name,
+      Name: name,
+      Surname: name,
+      Age: name,
+    };
+    setFormList([...form, item]);
+    localStorage.setItem("item", JSON.stringify(form));
+    localStorage.getItem("item");
   };
-
+  console.log(form);
   return (
     <Form>
       <FormGroup>
         <Label for="form_name">Form Name</Label>
         <Input
           type="text"
-          name="form_name"
-          value={formName}
+          name="formName"
           onChange={(e) => setFormName(e.target.value)}
         />
       </FormGroup>
@@ -34,8 +38,7 @@ const Example = (props) => {
         <Input
           type="textarea"
           name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => setFormDescription(e.target.value)}
         />
       </FormGroup>
 
@@ -45,7 +48,6 @@ const Example = (props) => {
           <Input
             type="text"
             name="name"
-            value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
@@ -65,7 +67,6 @@ const Example = (props) => {
           <Input
             type="text"
             name="surname"
-            value={surname}
             onChange={(e) => setSurname(e.target.value)}
           />
 
@@ -83,7 +84,6 @@ const Example = (props) => {
           <Input
             type="text"
             name="age"
-            value={age}
             onChange={(e) => setAge(e.target.value)}
           />
 
