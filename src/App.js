@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import { Container, Table } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Popup from "./components/Popup/Popup";
+import { FormContext } from "./context";
 
 const App = (props) => {
+  
+  const form =useContext(FormContext);
+
   const { className } = props;
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
+  const item = {
+    item: JSON.parse(localStorage.getItem("item")),
+  };
+   //////////console.log
   return (
+    
     <Container>
+      
       <div className="pt-2">
         <div className="header_search d-flex justify-content-between ">
           {/* <SearchIcon /> */}
@@ -20,9 +30,7 @@ const App = (props) => {
 
           <Button color="danger" onClick={toggle}>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-              <ModalHeader toggle={toggle}>Modal title
-              
-              </ModalHeader>
+              <ModalHeader toggle={toggle}>Modal title</ModalHeader>
               <ModalBody>
                 <Popup></Popup>
               </ModalBody>
@@ -43,30 +51,26 @@ const App = (props) => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Ad</th>
-              <th>Soyad</th>
-              <th>Yaş</th>
+              <th>Form Name</th>
+              <th>Description</th>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Age</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {/* {form.map((items, index) => {
+              return (
+                <tr>
+                  <th scope="row" key={index}>1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+              );
+            })} */}
           </tbody>
         </Table>
       </div>
