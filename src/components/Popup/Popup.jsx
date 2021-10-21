@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { FormContext } from "../../context";
 
@@ -14,6 +14,8 @@ const Example = (props) => {
     switch (actionType) {
       case "ADD_FORM_UI":
         setFormList([...form, payload.newForm]);
+        console.log("newForm",payload.newForm)
+        console.log(form);
         return;
 
       default:
@@ -29,18 +31,22 @@ const Example = (props) => {
       Surname: name,
       Age: name,
     };
+
     setFormList([...form, item]);
     localStorage.setItem("item", JSON.stringify(form));
     localStorage.getItem("item");
-
-   
-  };
-  
-  const handleAddFormUI=()=>{
     const formListItems = { formName, description, name, surname, age };
-    const beyza = dispatchFormEvent("ADD_FORM_UI", { newForm: formListItems });
-    
-  }
+    const deneme = dispatchFormEvent("ADD_FORM_UI", { newForm: formListItems });
+    console.log("formListItems", formListItems);
+    console.log("deneme", deneme);
+  };
+
+  // const handleAddFormUI=()=>{
+  //   const formListItems = { formName, description, name, surname, age };
+  //   const deneme = dispatchFormEvent("ADD_FORM_UI", { newForm: formListItems });
+  //   console.log("asdasd",deneme);
+  // }
+
   return (
     <FormContext.Provider
       value={{
@@ -124,7 +130,7 @@ const Example = (props) => {
             </Input>
           </FormGroup>
 
-          <Button onClick={handle,handleAddFormUI}>Add</Button>
+          <Button onClick={handle}>Add</Button>
         </div>
       </Form>
     </FormContext.Provider>

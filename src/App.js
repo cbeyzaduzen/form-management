@@ -1,4 +1,4 @@
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import { Container, Table } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
@@ -6,8 +6,8 @@ import Popup from "./components/Popup/Popup";
 import { FormContext } from "./context";
 
 const App = (props) => {
-  
-  const form =useContext(FormContext);
+  const forms = useContext(FormContext);
+  console.log("props.forms", props.forms);
 
   const { className } = props;
 
@@ -18,11 +18,9 @@ const App = (props) => {
   const item = {
     item: JSON.parse(localStorage.getItem("item")),
   };
-   //////////console.log
+
   return (
-    
     <Container>
-      
       <div className="pt-2">
         <div className="header_search d-flex justify-content-between ">
           {/* <SearchIcon /> */}
@@ -50,7 +48,6 @@ const App = (props) => {
         <Table>
           <thead>
             <tr>
-              <th>#</th>
               <th>Form Name</th>
               <th>Description</th>
               <th>Name</th>
@@ -59,7 +56,7 @@ const App = (props) => {
             </tr>
           </thead>
           <tbody>
-            {/* {form.map((items, index) => {
+           {/* {forms.map((items, index) => {
               return (
                 <tr>
                   <th scope="row" key={index}>1</th>
