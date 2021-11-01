@@ -16,7 +16,7 @@ const Example = (props) => {
         setFormList([...form, payload.newForm]);
         console.log("newForm",payload.newForm)
         console.log(form);
-        return;
+        return form;
 
       default:
         return;

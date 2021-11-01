@@ -7,7 +7,7 @@ import { FormContext } from "./context";
 
 const App = (props) => {
   const forms = useContext(FormContext);
-  console.log("props.forms", props.forms);
+  console.log("forms",forms);
 
   const { className } = props;
 
@@ -56,12 +56,14 @@ const App = (props) => {
             </tr>
           </thead>
           <tbody>
-           {/* {forms.map((items, index) => {
+            {/* {forms.map((items) => {
               return (
                 <tr>
-                  <th scope="row" key={index}>1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <th scope="row" key={index}>
+                    1
+                  </th>
+                  <td>{items.formName}</td>
+                  <td>{items.description}</td>
                   <td>@mdo</td>
                   <td>Mark</td>
                   <td>Otto</td>
